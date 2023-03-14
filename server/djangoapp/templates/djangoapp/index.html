@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    {% load static %}
     <title>Dealership Review</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
@@ -16,7 +17,38 @@
     <body>
         <div class="container">
      <!--Add a nav bar here -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+     <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Dealership Review</a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                {% if user.is_authenticated %}
+                <li>
+                    <a class="btn btn-link" href="#">{{ user.first_name }}({{ user.username }})</a>
+                    <a class="btn btn-link" href=" {% url 'djangoapp:logout' %}">Logout</a>
+                    <!-- <a class="btn btn-link" href="">Logout</a> -->
+                </li>
+                {% else %}
+                <li>
+                    <!-- <form class="form-inline" action="" method="post"> -->
+                    <form class="form-inline" action="{% url 'djangoapp:login' %}" method="post">
+
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Username" name="username" >
+                            <input type="password" class="form-control" placeholder="Password" name="psw" >
+                            <button class="btn btn-primary" type="submit">Login</button>
+                            <!-- <a class="btn btn-link" href="">Sign Up</a> -->
+                            <a class="btn btn-link" href=" {% url 'djangoapp:registration' %}">Sign Up</a>
+                        </div>
+                    </form>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+    <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="">BEST CARS</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -29,9 +61,22 @@
             <li class="nav-item">
               <a class="nav-link" href="contact">Contact</a>
             </li>
+            <li class="nav-item">
+              </li>
+            <li class="nav navbar-nav navbar-right">
+                <form class="form-inline" action="" method="post">
+                    <div class="input-group">
+                         <input type="text" class="form-control" placeholder="Username" name="username" >
+                         <input type="password" class="form-control" placeholder="Password" name="psw" >
+                         <button class="btn btn-primary" type="submit">Login</button>
+                         <a class="btn btn-link" href="">Sign Up</a>
+                    </div>
+                 </form>
+              </li>
           </ul>
+
         </div>
-      </nav>
+      </nav> -->
 
       <div class='container m-5'>
           <h1  class='display-1'>
@@ -44,3 +89,5 @@
     </body>
 
 </html>
+
+
