@@ -59,7 +59,7 @@ class CarDealer:
 # <HINT> Create a plain Python class `DealerReview` to hold review data
 class DealerReview:
 
-    def __init__(self, dealership, name, purchase, review, purchase_date, car_make, car_model, car_year, sentiment, id):
+    def __init__(self, dealership, name, purchase, review, sentiment):
         
         self.dealership = dealership
         self.name = name
@@ -73,7 +73,9 @@ class DealerReview:
         self.id = ""
 
     def __str__(self):
-        return "Reviews: " + self.review 
+        return "Reviewer Name : " + self.name + " , " +\
+                "Review : " + self.review + " , " +\
+                "Sentiment : " + self.sentiment
 
     def to_json(self):
         return json.dumps(self, default=lambda o: o.__dict__,
