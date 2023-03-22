@@ -8,12 +8,58 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.js"></script>
-
+    <style>
+        /* Set a background color for the page */
+        body {
+          background-color: #f8f8f8;
+        }
+  
+        /* Set the font family and size for the page */
+        body, h1, p {
+          font-family: Arial, sans-serif;
+          font-size: 16px;
+        }
+  
+        /* Center the content on the page */
+        .container {
+          max-width: 800px;
+          margin: 0 auto;
+          text-align: center;
+        }
+  
+        /* Style the header */
+        h1 {
+          font-size: 36px;
+          color: #333;
+          margin-top: 40px;
+          margin-bottom: 20px;
+        }
+  
+        /* Style the paragraph */
+        p {
+          color: #666;
+          margin-bottom: 30px;
+        }
+  
+        /* Style the button */
+        .btn {
+          display: inline-block;
+          padding: 10px 20px;
+          background-color: #333;
+          color: #fff;
+          border-radius: 5px;
+          text-decoration: none;
+          transition: background-color 0.3s ease;
+        }
+  
+        .btn:hover {
+          background-color: #555;
+        }
+      </style>
 </head>
-    <body>
-
         <body>
-            <nav class="navbar navbar-light bg-dark">
+            <div class="container">
+            <nav class="navbar fixed-top navbar-light bg-dark">
                 <div class="container-fluid">
                     <div class="navbar-header">
                         <a class="navbar-brand" style="color: white;" href="/djangoapp/">Car Dealership Review</a>
@@ -52,15 +98,15 @@
                 </div>
             </nav>   
 
-<div class="container-fluid">
+<div class="container">
     <br>
     <h3>Add a review about <b>{{dealer.full_name}}</b></h3>
     <form action="{% url 'djangoapp:add_review' id=dealer.id %}" method="post">
         <div class="form-group">
 
               <div class="mb-3">
-                  <label for="content"><b>Enter the review content: </b></label>
-                  <textarea class="form-control" id="content" name="content" rows="2" required></textarea>
+                  <label for="content"><b class="display-4">Enter the review content: </b></label>
+                  <textarea class="form-control" id="content" name="content" rows="5" required></textarea>
               </div>
 
               <div class="form-check">
@@ -79,9 +125,9 @@
                 </select>
             </div>
 
-            <div class="mb-3">
+            <div class="mb-3 d-flex justify-content-center">
                 <label for="purchasedate"><b>Select Your Purchase Date: </b></label>
-                <input class="date-own form-control" style="width: 300px;" type="text" name="purchasedate" id="purchasedate">
+                <input class="date-own form-control float-none ml-1" style="width: 120px; height: 30px;" type="text" name="purchasedate" id="purchasedate">
             </div>
 
       </div>
@@ -96,6 +142,11 @@
       {% endif %}
   </form>
 </div>
+  
+</div>
+<footer class="m-5 float-right">
+    <p class="pull-right" >&copy; 2023 Car Dealership. All rights reserved. Sebastian Gallo</p>
+  </footer>  
 </body>
 <script type="text/javascript">
     $('.date-own').datepicker({
@@ -103,5 +154,6 @@
      });
 </script>
 
-    </body>
+
+    
 </html>
